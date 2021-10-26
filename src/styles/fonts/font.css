@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "Brusher";
+  font-style: normal;
+  src: url("./Brusher.woff2") format("woff2"),
+    url("./Brusher.woff") format("woff");
+}
