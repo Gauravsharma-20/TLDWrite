@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import HomePage from './views/HomePage';
 
 import './App.css';
+import FileUploader from './views/FileUploader';
 
 // const HomePage = React.lazy(() => import('./views/HomePage'));
 // const Page404 = React.lazy(() => import('./common/Error/Page404'));
@@ -19,7 +20,8 @@ const App = () => {
     //     </Switch>
     //     </Suspense>
     // </BrowserRouter >
-    <HomePage/>
+    // <HomePage/>
+    <FileUploader/>
   );
 };
 

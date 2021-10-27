@@ -1,3 +1,14 @@
+@import url(../src/styles/fonts/font.css);
+
 * {
   margin: 0;
 }
+
+body {
+  font-family: "Brusher", Arial, Helvetica, sans-serif;
+  font: normal;
+}
+/* body {
+  height: 100%;
+  width: 100%;
+} */
