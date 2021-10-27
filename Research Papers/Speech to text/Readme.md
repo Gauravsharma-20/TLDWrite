@@ -1,4 +1,3 @@
-#V1 - Speech to text
+### - Speech to text
 
-
-### eep Learning Prototype Model 
+#V1 Deep Learning Prototype Model 
