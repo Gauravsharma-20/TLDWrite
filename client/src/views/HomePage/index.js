@@ -7,7 +7,14 @@ class HomePage extends React.Component{
   render(){
     return (
       <div id="hp01Homepage">
-        {/* <img src={require('../../utils/images/meeting.jpg')} alt="meeting" className="hp01Meeting"/> */}
+       <div className="hp01TopBar">
+         <div className="hp01In">
+           Sign In &nbsp; &nbsp; &nbsp;Sign Up
+         </div>
+        </div> 
+       <div className="hp01Summariser">
+         Meeting Summariser
+       </div>
       </div>
    )
   }

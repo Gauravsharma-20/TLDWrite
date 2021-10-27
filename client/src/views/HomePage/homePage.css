@@ -1,4 +1,13 @@
-#hp01Homepage {
-    background-image: url(../../utils/images/meeting.jpg);
-    opacity: 1;
+#hp01Meeting {
+  background-image: url("../../utils/images/meeting.jpg");
+  opacity: 0.8;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hp01TopBar {
+  display: flex;
+  justify-content: flex-end;
 }
