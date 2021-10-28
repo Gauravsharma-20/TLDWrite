@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { toast, ToastContainer} from 'react-toastify';
+import FileDownload from 'js-file-download';
 
 import axios from 'axios';
 
@@ -12,7 +13,7 @@ export const FileUploader = ({onSuccess}) => {
         setFile(e.target.files[0])
     };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         const data = new FormData();
@@ -24,14 +25,14 @@ export const FileUploader = ({onSuccess}) => {
             }
         }
 
-        axios.post('//localhost:5000/speechtotext', data, config)
-            .then((response) => {
-                console.log(response.data.text)
-                toast.success(response.data);
-            })
-            .catch((e) => {
-                toast.error('Upload Error')
-            })
+        try {
+            const response = await axios.post('//localhost:5000/speechtotext', data, config)
+            alert("Success")
+            FileDownload(response.data, 'report.txt');
+        }
+        catch(e) {
+            alert(e)
+        }
     };
 
     return (

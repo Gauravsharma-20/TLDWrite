@@ -1,5 +1,6 @@
 import speech_recognition as sr
 import sys
+import summarizer
 
 def main():
   a = sys.argv[1]
@@ -10,7 +11,14 @@ def main():
 
     try:
       text = r.recognize_google(audio_text)
-      sys.stdout.write(text)
+
+      file = open('./public/speechtotext/'+a[0:a.index('.')]+'.txt', "w")
+      file.write(text)
+      file.close()
+
+      summarizer.main(a[0:a.index('.')]+'.txt')
+
+      sys.stdout.write("Success")
     except Exception as e:
       sys.stdout.write("Error Occured")
 

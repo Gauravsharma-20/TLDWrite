@@ -2,7 +2,9 @@ const express = require('express')
 const cors = require('cors')
 const multer = require('multer')
 const path = require('path')
-const spawn = require('child_process').spawn;
+const mime = require('mime')
+const spawn = require('child_process').spawn
+const fs = require('fs')
 
 const storage = multer.diskStorage({
     destination: "./public/uploads",
@@ -44,7 +46,12 @@ app.post('/speechtotext', async (req, res) => {
                     return res.status(500).json({'text': text})
                 }
 
-                return res.status(200).json({'text':text})
+                var fileName = req.file.filename.toString()
+                fileName = fileName.substring(0, fileName.indexOf('.'))+".txt"
+
+                const file = `${__dirname}\\public\\textsummarization\\${fileName}`
+                
+                res.download(file)
             })
         })
     }

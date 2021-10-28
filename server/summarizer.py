@@ -1,3 +1,4 @@
+import sys
 import nltk
 from nltk.corpus import stopwords
 from nltk.cluster.util import cosine_distance
@@ -5,7 +6,7 @@ import os
 import numpy as np
 import networkx as nx
 
-nltk.download('stopwords')
+# nltk.download('stopwords')
  
 def read_article(file_name):
     file = open(file_name, "r")
@@ -16,7 +17,6 @@ def read_article(file_name):
     for sentence in article:
         #print(sentence)
         sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
-    sentences.pop() 
     
     return sentences
 
@@ -58,20 +58,20 @@ def build_similarity_matrix(sentences, stop_words):
 
     return similarity_matrix
 
-def output_summary(summarize_text):
-  print("Summarize Text: \n", ". ".join(summarize_text))
+def output_summary(summarize_text, file_name):
+    # print("Summarize Text: \n", ". ".join(summarize_text))
 
-  #print to file
-  file1 = open(f"./Summarised Samples/{file_name}","a")
-  file1.write(". ".join(summarize_text))
-  file1.close()
+    #print to file
+    file1 = open(f"./public/textsummarization/{file_name}","w")
+    file1.write(". ".join(summarize_text))
+    file1.close()
 
-def generate_summary(file_name, top_n=5):
+def generate_summary(file_path, file_name, top_n=5):
     stop_words = stopwords.words('english')
     summarize_text = []
 
     # Step 1 - Read text anc split it
-    sentences =  read_article(file_name)
+    sentences =  read_article(file_path)
 
     # Step 2 - Generate Similary Martix across sentences
     sentence_similarity_martix = build_similarity_matrix(sentences, stop_words)
@@ -84,12 +84,14 @@ def generate_summary(file_name, top_n=5):
     ranked_sentence = sorted(((scores[i],s) for i,s in enumerate(sentences)), reverse=True)    
     #print("Indexes of top ranked_sentence order are ", ranked_sentence)    
 
-    for i in range(top_n):
-      summarize_text.append(" ".join(ranked_sentence[i][1]))
+    for i in range(min(top_n, 1)):
+        summarize_text.append(" ".join(ranked_sentence[i][1]))
 
     # Step 5 - Print summary/ write to output file
-    output_summary(summarize_text)
+    output_summary(summarize_text, file_name)
 
+def main(file_name):
+    generate_summary(f"./public/speechtotext/{file_name}", file_name, 2)
 
-file_name = 'trump.txt'
-generate_summary(f"./Text Samples/{file_name}", 2)
+if __name__ == "__main__":
+    main(sys.argv[1])
