@@ -1,30 +1,33 @@
 import {useState} from 'react';
-import { toast} from 'react-toastify';
+import { toast, ToastContainer} from 'react-toastify';
 
 import axios from 'axios';
 
 import './fileUploader.css';
 
 export const FileUploader = ({onSuccess}) => {
-    const [files, setFiles] = useState([]);
+    const [file, setFile] = useState([]);
 
     const onInputChange = (e) => {
-        setFiles(e.target.files)
+        setFile(e.target.files[0])
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         const data = new FormData();
+        data.append('file', file);
 
-        for(let i = 0; i < files.length; i++) {
-            data.append('file', files[i]);
+        const config = {
+            headers: {
+                'content-type':'multipart/form-data'
+            }
         }
 
-        axios.post('//localhost:8000/upload', data)
+        axios.post('//localhost:5000/speechtotext', data, config)
             .then((response) => {
-                toast.success('Upload Success');
-                onSuccess(response.data)
+                console.log(response.data.text)
+                toast.success(response.data);
             })
             .catch((e) => {
                 toast.error('Upload Error')
@@ -36,10 +39,11 @@ export const FileUploader = ({onSuccess}) => {
             <div className="fp11FileUploader">
                 <div className="fp11formGroup fp01files">
                     <label className="fp11Label">Upload Your File </label>
-                    <input type="file" onChange={onInputChange} className="fp11formControl" multiple/>
+                    <input type="file" onChange={onInputChange} className="fp11formControl"/>
                 </div>
                 <div className="fp11Button">
                 <button >Submit</button>
+                <ToastContainer />
                 </div>
             </div>    
         </form>
