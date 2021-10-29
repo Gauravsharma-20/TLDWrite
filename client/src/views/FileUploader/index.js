@@ -31,7 +31,7 @@ export const FileUploader = ({onSuccess}) => {
             FileDownload(response.data, 'report.txt');
         }
         catch(e) {
-            alert(e)
+            alert(e);
         }
     };
 
