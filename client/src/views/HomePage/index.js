@@ -1,5 +1,4 @@
 import React from "react";
-// import meetingImage from '../../utils/images/meeting.jpg';
 
 import './homePage.css';
 
@@ -13,7 +12,8 @@ class HomePage extends React.Component{
          </div>
         </div> 
        <div className="hp01Summariser">
-         Meeting Summariser
+         Meeting Summariser <br/><br/>
+         Enter
        </div>
       </div>
    )

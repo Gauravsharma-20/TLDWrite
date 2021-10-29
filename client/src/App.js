@@ -20,8 +20,8 @@ const App = () => {
     //     </Switch>
     //     </Suspense>
     // </BrowserRouter >
-    // <HomePage/>
-    <FileUploader/>
+    <HomePage/>
+    // <FileUploader/>
   );
 };
 
