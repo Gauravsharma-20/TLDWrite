@@ -1,13 +1,29 @@
-#hp01Meeting {
-  background-image: url("../../utils/images/meeting.jpg");
-  opacity: 0.8;
+#hp01Homepage {
+  background: rgba(79, 82, 82, 0.1) url("../../utils/images/landingPage.png")
+    no-repeat;
+  background-position: center;
   background-size: cover;
+  min-height: 100vh;
+  overflow: hidden;
+  background-blend-mode: overlay;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .hp01TopBar {
-  display: flex;
-  justify-content: flex-end;
+  flex-grow: 1;
+  width: 100%;
+  text-align: right;
+  font-size: 25px;
+  padding: 30px 100px 20px 0;
+}
+
+.hp01Summariser {
+  flex-grow: 2;
+  font-size: 60px;
+  text-align: center;
+  color: #004dff;
+  text-shadow: 2px 2px #00ff93;
 }
