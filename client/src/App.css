@@ -8,7 +8,7 @@ body {
   font-family: "Brusher", Arial, Helvetica, sans-serif;
   font: normal;
 }
-/* body {
-  height: 100%;
-  width: 100%;
-} */
+
+button {
+  font-family: inherit;
+}

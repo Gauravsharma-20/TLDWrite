@@ -1,27 +1,24 @@
 import React, {Suspense} from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import HomePage from './views/HomePage';
 
 import './App.css';
-import FileUploader from './views/FileUploader';
 
-// const HomePage = React.lazy(() => import('./views/HomePage'));
-// const Page404 = React.lazy(() => import('./common/Error/Page404'));
+const HomePage = React.lazy(() => import('./views/HomePage'));
+const FileUploader = React.lazy(() => import('./views/FileUploader'));
 
 const App = () => {
 
   return (
-    // <BrowserRouter>
-    // <Suspense fallback={()=>{}}>
-    //     <Switch>
-    //       <Route exact path="/" component={HomePage} />
-    //       {/* <Route component={Page404} /> */}
-    //       <Redirect to="/" />
-    //     </Switch>
-    //     </Suspense>
-    // </BrowserRouter >
-    <HomePage/>
-    // <FileUploader/>
+    <BrowserRouter>
+    <Suspense fallback={()=>{}}>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/FileUploader" component={FileUploader} />
+          {/* <Route component={Page404} />         will do 2morrow assignment krni hai crypto ki*/}                         
+          <Redirect to="/" />
+        </Switch>
+        </Suspense>
+    </BrowserRouter >
   );
 };
 
