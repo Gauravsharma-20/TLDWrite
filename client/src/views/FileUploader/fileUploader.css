@@ -56,3 +56,12 @@ form {
   font-size: 20px;
   font-family: inherit;
 }
+
+.fp11upbutton {
+  text-align: center;
+  margin: 20px;
+}
+
+.fp11upbutton button {
+  font-size: 30px;
+}

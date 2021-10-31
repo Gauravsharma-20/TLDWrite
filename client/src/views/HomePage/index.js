@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import { useHistory } from "react-router-dom";
 
 import './homePage.css';
@@ -25,4 +25,4 @@ const HomePage=()=>{
    )
 }
 
-export default HomePage;
+export default memo(HomePage);

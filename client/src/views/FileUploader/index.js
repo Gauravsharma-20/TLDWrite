@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, memo } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 
@@ -9,10 +9,12 @@ import axios from 'axios';
 import "react-toastify/dist/ReactToastify.css";
 import './fileUploader.css';
 
-const FileUploader = ({onSuccess}) => {
+const FileUploader = () => {
 
     const [file, setFile] = useState([]);
     const [uploadPercentage, setUploadPercentage]=useState(0);
+
+    const inputFile = useRef(null);
 
     const successToast=()=>{
         toast("File Uploaded Successfully",{
@@ -31,7 +33,10 @@ const FileUploader = ({onSuccess}) => {
     }
     
     const onInputChange = (event) => {
-        setFile(event.target.files[0])
+        setUploadPercentage(0);
+        const file = event.target.files[0]; // accesing file
+        console.log(file);
+        setFile(file); // 
     };
 
     const onSubmit = async (event) => {
@@ -40,29 +45,36 @@ const FileUploader = ({onSuccess}) => {
         const data = new FormData();
         data.append('file', file);
 
-        const options = {
-            onUploadProgress: (progressEvent) => {
-              const {loaded, total} = progressEvent;
-              let percent = Math.floor( (loaded * 100) / total )
-              console.log( `${loaded}kb of ${total}kb | ${percent}%` );
+        // const options = {
+        //     onUploadProgress: (progressEvent) => {
+        //       const {loaded, total} = progressEvent;
+        //       let percent = Math.floor( (loaded * 100) / total )
+        //       console.log( `${loaded}kb of ${total}kb | ${percent}%` );
       
-              if( percent < 100 ){
-                setUploadPercentage(percent);
-              }
+        //       if( percent < 100 ){
+        //         setUploadPercentage(percent);
+        //       }
+
+        //     }
+        //   }
+
+        const config = {
+            headers: {
+                'content-type':'multipart/form-data'
             }
-          }
+        }
 
         try {
-            const response = await axios.post('//localhost:5000/speechtotext', data, options)
-            // alert("Success");
+            const response = await axios.post('//localhost:5000/speechtotext', data, config)
+
             successToast();
             FileDownload(response.data, 'report.txt');
-        }
-        catch(event) {
+        }catch(event) {
             // alert(e);
             errorToast();
         }
-    };
+    
+    }
 
     return (
         <div className="fp11UploaderWrapper">
@@ -73,29 +85,28 @@ const FileUploader = ({onSuccess}) => {
                 <ToastContainer 
                 draggable={false}
                 transition={Bounce}
-                autoClose={5000}
+                autoClose={1000}
                 />
                 <i class="fp11Icon fas fa-cloud-upload-alt"></i>
                 <header>Drag and Drop Files</header>
                     <span>OR</span>
-                <button>Browse</button>
-                <input 
+                <input
                 type="file" 
-                onDrop={onInputChange}
-                onDragOver={(event)=>{
-                    event.preventDefault();
-                    event.stopPropagation();
-                }}
+                ref={inputFile}
                 onChange={onInputChange} 
                 className="fp11formControl" 
-                hidden
                 /> 
+                {/* { uploadPercentage > 0 ? <ProgressBar now={uploadPercentage} active label={`${uploadPercentage}%`} />:null } */}
                 </div>
             </div>     
         </form>
-        { uploadPercentage > 0 ? <ProgressBar now={uploadPercentage} active label={`${uploadPercentage}%`} />:null }
+            <div className="fp11upbutton">
+                <button onClick={onSubmit}>                   
+                    Upload
+                </button>
+            </div>
         </div>
     )
 };
 
-export default FileUploader;
+export default memo(FileUploader);
