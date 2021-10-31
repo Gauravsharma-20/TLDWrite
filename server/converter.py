@@ -4,28 +4,29 @@ import sys
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import summarizer
+import shutil
 
 fileName = sys.argv[1]
 r = sr.Recognizer()
 
-path = f".\\public\\speechtotext\\{fileName}"
+path = f".\\public\\uploads\\{fileName}"
 sound = AudioSegment.from_wav(path)
 
 # split audio sound where silence is 700 miliseconds or more and get chunks
 chunks = split_on_silence(sound,
-    # experiment with this value for your target audio file
-    min_silence_len = 500,
-    # adjust this per requirement
-    silence_thresh = sound.dBFS-14,
-    # keep the silence for 1 second, adjustable as well
-    keep_silence=500,
+  # experiment with this value for your target audio file
+  min_silence_len = 500,
+  # adjust this per requirement
+  silence_thresh = sound.dBFS-14,
+  # keep the silence for 1 second, adjustable as well
+  keep_silence=500,
 )
 
 folder_name = ".\\public\\audio-chunks"
 
 # create a directory to store the audio chunks
 if not os.path.isdir(folder_name):
-    os.mkdir(folder_name)
+  os.mkdir(folder_name)
 
 whole_text = ""
 
@@ -45,13 +46,13 @@ for i, audio_chunk in enumerate(chunks, start=1):
       sys.stdout.write("Error Occured "+str(e))
     else:
       text = f"{text.capitalize()}. "
-      print(chunk_filename, ":", text)
       whole_text += text
 
-file = open(f".\\public\\speechtotext\\{fileName[0:fileName.index('.')]}.txt", "w")
+txtFileName = fileName[0:fileName.index('.')]+".txt"
+file = open(f".\\public\\speechtotext\\{txtFileName}", "w")
 file.write(whole_text)
 file.close()
 
-summarizer.main(f"{fileName[0:fileName.index('.')]}.txt")
+summarizer.main(txtFileName)
 sys.stdout.write("Success")
-os.rmdir(folder_name)
+shutil.rmtree(folder_name)

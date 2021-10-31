@@ -66,7 +66,6 @@ const FileUploader = () => {
 
         try {
             const response = await axios.post('//localhost:5000/speechtotext', data, config)
-
             successToast();
             FileDownload(response.data, 'report.txt');
         }catch(event) {
@@ -87,7 +86,7 @@ const FileUploader = () => {
                 transition={Bounce}
                 autoClose={1000}
                 />
-                <i class="fp11Icon fas fa-cloud-upload-alt"></i>
+                <i className="fp11Icon fas fa-cloud-upload-alt"></i>
                 <header>Drag and Drop Files</header>
                     <span>OR</span>
                 <input

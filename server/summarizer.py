@@ -1,12 +1,8 @@
 import sys
-import nltk
 from nltk.corpus import stopwords
 from nltk.cluster.util import cosine_distance
-import os
 import numpy as np
 import networkx as nx
-
-# nltk.download('stopwords')
  
 def read_article(file_name):
     file = open(file_name, "r")

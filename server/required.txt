@@ -1,2 +1,4 @@
 pip install nltk
 pip install networkx
+pip install SpeechRecognition
+pip install pydub
