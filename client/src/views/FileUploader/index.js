@@ -87,8 +87,8 @@ const FileUploader = () => {
                 autoClose={1000}
                 />
                 <i className="fp11Icon fas fa-cloud-upload-alt"></i>
-                <header>Drag and Drop Files</header>
-                    <span>OR</span>
+                {/* <header>Drag and Drop Files</header>
+                    <span>OR</span> */}
                 <input
                 type="file" 
                 ref={inputFile}
