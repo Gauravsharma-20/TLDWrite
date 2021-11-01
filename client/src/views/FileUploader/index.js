@@ -1,6 +1,7 @@
 import { useState, useRef, memo } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import DragBrowseUploader from './DragBrowseUploader';
 
 import FileDownload from 'js-file-download';
 
@@ -78,7 +79,7 @@ const FileUploader = () => {
 
     return (
         <div className="fp11UploaderWrapper">
-        <form method="post" action="#" id="#" onSubmit={onSubmit}>
+        {/* <form method="post" action="#" id="#" onSubmit={onSubmit}>
             <label className="fp11Label">Upload Your File </label>
             <div className="fp11FileUploader">
                 <div className="fp11formGroup fp01files"> 
@@ -95,16 +96,17 @@ const FileUploader = () => {
                 ref={inputFile}
                 onChange={onInputChange} 
                 className="fp11formControl" 
-                /> 
+                /> */}
                 {/* { uploadPercentage > 0 ? <ProgressBar now={uploadPercentage} active label={`${uploadPercentage}%`} />:null } */}
-                </div>
+                {/* </div>
             </div>     
-        </form>
-            <div className="fp11upbutton">
-                <button onClick={onSubmit}>                   
-                    Upload
-                </button>
-            </div>
+            </form>  */}
+            {/* // <div className="fp11upbutton">
+            //     <button onClick={onSubmit}>                   
+            //         Upload
+            //     </button>
+            // </div> */}
+            <DragBrowseUploader />
         </div>
     )
 };
