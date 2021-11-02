@@ -46,19 +46,6 @@ const FileUploader = () => {
         const data = new FormData();
         data.append('file', file);
 
-        // const options = {
-        //     onUploadProgress: (progressEvent) => {
-        //       const {loaded, total} = progressEvent;
-        //       let percent = Math.floor( (loaded * 100) / total )
-        //       console.log( `${loaded}kb of ${total}kb | ${percent}%` );
-      
-        //       if( percent < 100 ){
-        //         setUploadPercentage(percent);
-        //       }
-
-        //     }
-        //   }
-
         const config = {
             headers: {
                 'content-type':'multipart/form-data'
