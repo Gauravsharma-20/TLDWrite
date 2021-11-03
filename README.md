@@ -4,7 +4,7 @@ Meeting Summarisation
 # Install Server Dependencies
 1. Open terminal in server folder directory.
 2. Run `npm i`.
-3. Run `pip install -r requirements.txt`.
+<!-- 3. Run `pip install -r requirements.txt`. -->
 
 # Run Server
 1. Run `node index.js` or `nodemon index.js` in server directory.
