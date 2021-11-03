@@ -3,6 +3,7 @@ const cors = require('cors')
 const multer = require('multer')
 const path = require('path')
 const spawn = require('child_process').spawn
+const hasbin = require('hasbin')
 
 const storage = multer.diskStorage({
     destination: `${__dirname}/public/uploads`,
@@ -37,8 +38,18 @@ app.post('/speechtotext', async (req, res) => {
                 return res.status(404).send("No File Found. Try again")
             }
 
-            const py = spawn('python', ['converter.py', req.file.filename.toString()])
-
+            let py;
+            
+            if(hasbin.sync('python') === true) {
+                py = spawn('python', ['converter.py', req.file.filename.toString()])
+            }
+            else if(hasbin.sync('python3') === true) {
+                py = spawn('python3', ['converter.py', req.file.filename.toString()]);
+            }
+            else {
+                return res.status(500).send("Python not found!!! :(")
+            }
+            
             py.stdout.on('data', data => {
                 const text = data.toString()
 
