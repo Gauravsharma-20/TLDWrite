@@ -28,5 +28,5 @@ Upload any `.wav` file on any meeting recording having only 1 speaker and the su
 # install nltk stopwords
 
 1. Open python command Line Interface write python3(unix) or python
-2. > > > import nltk
-3. > > > nltk.download("stopwords")
+2. import nltk
+3. nltk.download("stopwords")
