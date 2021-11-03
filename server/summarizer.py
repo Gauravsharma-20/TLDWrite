@@ -3,6 +3,7 @@ from nltk.corpus import stopwords
 from nltk.cluster.util import cosine_distance
 import numpy as np
 import networkx as nx
+import os
  
 def read_article(file_name):
     file = open(file_name, "r")
@@ -58,7 +59,7 @@ def output_summary(summarize_text, file_name):
     # print("Summarize Text: \n", ". ".join(summarize_text))
 
     #print to file
-    file1 = open(f"./public/textsummarization/{file_name}","w")
+    file1 = open(f"{os.path.dirname(os.path.realpath(__file__))}/public/textsummarization/{file_name}","w")
     file1.write(". ".join(summarize_text))
     file1.close()
 
@@ -87,7 +88,7 @@ def generate_summary(file_path, file_name, top_n=5):
     output_summary(summarize_text, file_name)
 
 def main(file_name):
-    generate_summary(f"./public/speechtotext/{file_name}", file_name, 2)
+    generate_summary(f"{os.path.dirname(os.path.realpath(__file__))}/public/speechtotext/{file_name}", file_name, 2)
 
 if __name__ == "__main__":
     main(sys.argv[1])

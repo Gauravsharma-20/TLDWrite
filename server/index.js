@@ -2,12 +2,10 @@ const express = require('express')
 const cors = require('cors')
 const multer = require('multer')
 const path = require('path')
-const mime = require('mime')
 const spawn = require('child_process').spawn
-const fs = require('fs')
 
 const storage = multer.diskStorage({
-    destination: "./public/uploads",
+    destination: `${__dirname}/public/uploads`,
     filename: function(req, file, cb){
        cb(null, + Date.now() + path.extname(file.originalname));
     }
@@ -35,6 +33,10 @@ app.post('/speechtotext', async (req, res) => {
 
         upload(req, res, async () => {
 
+            if (req.file === undefined) {
+                return res.status(404).send("No File Found. Try again")
+            }
+
             const py = spawn('python', ['converter.py', req.file.filename.toString()])
 
             py.stdout.on('data', data => {
@@ -49,7 +51,7 @@ app.post('/speechtotext', async (req, res) => {
                 var fileName = req.file.filename.toString()
                 fileName = fileName.substring(0, fileName.indexOf('.'))+".txt"
 
-                const file = `${__dirname}\\public\\textsummarization\\${fileName}`
+                const file = `${__dirname}/public/textsummarization/${fileName}`
                 
                 res.download(file)
             })

@@ -6,10 +6,12 @@ from pydub.silence import split_on_silence
 import summarizer
 import shutil
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 fileName = sys.argv[1]
 r = sr.Recognizer()
 
-path = f".\\public\\uploads\\{fileName}"
+path = f"{dir_path}/public/uploads/{fileName}"
 sound = AudioSegment.from_wav(path)
 
 # split audio sound where silence is 700 miliseconds or more and get chunks
@@ -22,7 +24,7 @@ chunks = split_on_silence(sound,
   keep_silence=500,
 )
 
-folder_name = ".\\public\\audio-chunks"
+folder_name = f"{dir_path}/public/audio-chunks"
 
 # create a directory to store the audio chunks
 if not os.path.isdir(folder_name):
@@ -49,7 +51,7 @@ for i, audio_chunk in enumerate(chunks, start=1):
       whole_text += text
 
 txtFileName = fileName[0:fileName.index('.')]+".txt"
-file = open(f".\\public\\speechtotext\\{txtFileName}", "w")
+file = open(f"{dir_path}/public/speechtotext/{txtFileName}", "w")
 file.write(whole_text)
 file.close()
 
