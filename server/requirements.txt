@@ -1,0 +1,5 @@
+networkx==2.6.3
+nltk==3.6.5
+numpy==1.19.5
+pydub==0.25.1
+SpeechRecognition==3.8.1
