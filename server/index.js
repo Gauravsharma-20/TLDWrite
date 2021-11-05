@@ -35,7 +35,11 @@ app.post('/speechtotext', async (req, res) => {
         upload(req, res, async () => {
 
             if (req.file === undefined) {
-                return res.status(404).send("No File Found. Try again")
+                return res.status(400).json({message:"No File Found. Try again"})
+            }
+
+            if(path.extname(req.file.filename) !== ".wav") {
+                return res.status(400).json({message: "Upload only .wav files"})
             }
 
             let py;
@@ -55,8 +59,8 @@ app.post('/speechtotext', async (req, res) => {
 
                 console.log(text)
 
-                if (text === "Error Occured") {
-                    return res.status(500).json({'text': text})
+                if (text === "Error Occurred") {
+                    return res.status(500).json({message: text})
                 }
 
                 var fileName = req.file.filename.toString()

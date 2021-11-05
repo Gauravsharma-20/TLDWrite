@@ -13,19 +13,20 @@ const FileUploader = () => {
 
     const [file, setFile] = useState([]);
     const [uploadPercentage, setUploadPercentage]=useState(0);
+    const [loadingState, setLoadingState] = useState(false);
 
     const inputFile = useRef(null);
 
     const successToast=()=>{
-        toast("File Uploaded Successfully",{
+        toast("Result Computed Successfully",{
             className:"fp11Toast",
             draggable:true,
             position:toast.POSITION.TOP_CENTER 
          });
     }
     
-    const errorToast=()=>{
-        toast("Error In File Uploading",{
+    const errorToast=(message="Error In File Uploading")=>{
+        toast(message,{
             className:"fp11Toast",
             draggable:true,
             position:toast.POSITION.TOP_CENTER 
@@ -35,13 +36,13 @@ const FileUploader = () => {
     const onInputChange = (event) => {
         setUploadPercentage(0);
         const file = event.target.files[0]; // accesing file
-        console.log(file);
         setFile(file); // 
     };
 
     const onSubmit = async (event) => {
         event.preventDefault();
 
+        setLoadingState(true);
         const data = new FormData();
         data.append('file', file);
 
@@ -65,45 +66,53 @@ const FileUploader = () => {
         }
 
         try {
-            const response = await axios.post('//localhost:5000/speechtotext', data, config)
+            const response = await axios.post('//localhost:5000/speechtotext', data, config);
+            setLoadingState(false);
             successToast();
-            FileDownload(response.data, 'report.txt');
-        }catch(event) {
-            // alert(e);
-            errorToast();
+            FileDownload(response.data, 'summary.txt');
+        } catch(e) {
+            if (e.response && e.response.data) {
+                errorToast(e.response.data.message); // some reason error message
+            }
+            else {
+                errorToast();
+            }
+            setLoadingState(false);
         }
     
     }
 
     return (
         <div className="fp11UploaderWrapper">
-        <form method="post" action="#" id="#" onSubmit={onSubmit}>
-            <label className="fp11Label">Upload Your File </label>
-            <div className="fp11FileUploader">
-                <div className="fp11formGroup fp01files"> 
-                <ToastContainer 
-                draggable={false}
-                transition={Bounce}
-                autoClose={1000}
-                />
-                <i className="fp11Icon fas fa-cloud-upload-alt"></i>
-                {/* <header>Drag and Drop Files</header>
-                    <span>OR</span> */}
-                <input
-                type="file" 
-                ref={inputFile}
-                onChange={onInputChange} 
-                className="fp11formControl" 
-                /> 
-                {/* { uploadPercentage > 0 ? <ProgressBar now={uploadPercentage} active label={`${uploadPercentage}%`} />:null } */}
-                </div>
-            </div>     
-        </form>
+            <form method="post" action="#" id="#" onSubmit={onSubmit}>
+                <label className="fp11Label">Upload Your File </label>
+                <div className="fp11FileUploader">
+                    <div className="fp11formGroup fp01files"> 
+                    <ToastContainer 
+                    draggable={false}
+                    transition={Bounce}
+                    autoClose={1000}
+                    />
+                    <i className="fp11Icon fas fa-cloud-upload-alt"></i>
+                    {/* <header>Drag and Drop Files</header>
+                        <span>OR</span> */}
+                    <input
+                    type="file" 
+                    ref={inputFile}
+                    onChange={onInputChange} 
+                    className="fp11formControl" 
+                    /> 
+                    {/* { uploadPercentage > 0 ? <ProgressBar now={uploadPercentage} active label={`${uploadPercentage}%`} />:null } */}
+                    </div>
+                </div>     
+            </form>
             <div className="fp11upbutton">
                 <button onClick={onSubmit}>                   
                     Upload
                 </button>
             </div>
+            {loadingState?
+                <div className="fp11loadmessage">The Result is being computed. Please wait for some time....</div> : null}
         </div>
     )
 };

@@ -65,3 +65,9 @@ form {
 .fp11upbutton button {
   font-size: 30px;
 }
+
+.fp11loadmessage {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 20px;
+}
