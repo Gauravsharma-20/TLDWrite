@@ -9,7 +9,7 @@ import axios from 'axios';
 import "react-toastify/dist/ReactToastify.css";
 import './fileUploader.css';
 
-const FileUploader = () => {
+const FileUploader = (props) => {
 
     const [file, setFile] = useState([]);
     const [uploadPercentage, setUploadPercentage]=useState(0);
@@ -65,11 +65,14 @@ const FileUploader = () => {
             }
         }
 
+        let endpoint = props.action.toLowerCase();
+        let downloadName = endpoint === "speechtotext" ? "transcript" : "summary";
+
         try {
-            const response = await axios.post('//localhost:5000/speechtotext', data, config);
+            const response = await axios.post(`//localhost:5000/${endpoint}`, data, config);
             setLoadingState(false);
             successToast();
-            FileDownload(response.data, 'summary.txt');
+            FileDownload(response.data, `${downloadName}.txt`);
         } catch(e) {
             if (e.response && e.response.data) {
                 errorToast(e.response.data.message); // some reason error message

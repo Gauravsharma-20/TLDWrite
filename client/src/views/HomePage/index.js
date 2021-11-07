@@ -6,8 +6,8 @@ import './homePage.css';
 const HomePage=()=>{
   const history = useHistory();
 
-  const handleButtonClick=()=>{
-    history.push('/FileUploader');
+  const handleButtonClick=(e)=>{
+    history.push(`/${e}`);
   }
 
   return (
@@ -18,8 +18,10 @@ const HomePage=()=>{
         </div>
       </div> 
       <div className="hp01Summariser">
-        Meeting Summariser<br/>
-        <button onClick={handleButtonClick}>Enter</button>
+        Meeting Assistant<br/>
+        <button onClick={() => handleButtonClick("SpeechToText")}>Speech to Text</button>
+        <button onClick={() => handleButtonClick("TextSummariser")}>Transcriopt Summarisation</button>
+        <button onClick={() => handleButtonClick("MeetingSummariser")}>Meeting Audio Summarisation</button>
       </div>
     </div>
    )

@@ -4,7 +4,9 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
 const HomePage = React.lazy(() => import('./views/HomePage'));
-const FileUploader = React.lazy(() => import('./views/FileUploader'));
+const MeetingSummariser = React.lazy(() => import('./views/MeetingSummariser'));
+const TextSummariser = React.lazy(() => import('./views/TextSummariser'));
+const SpeechToText = React.lazy(() => import('./views/SpeechToText'));
 
 const App = () => {
 
@@ -13,8 +15,10 @@ const App = () => {
     <Suspense fallback={()=>{}}>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/FileUploader" component={FileUploader} />
-          {/* <Route component={Page404} />         will do 2morrow assignment krni hai crypto ki*/}                         
+          <Route exact path="/MeetingSummariser" component={MeetingSummariser} />
+          <Route exact path="/TextSummariser" component={TextSummariser} />
+          <Route exact path="/SpeechToText" component={SpeechToText} />
+          {/* <Route component={Page404} />                          */}
           <Redirect to="/" />
         </Switch>
         </Suspense>
