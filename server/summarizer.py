@@ -94,4 +94,12 @@ def main(file_name):
     generate_summary(f"{os.path.dirname(os.path.realpath(__file__))}/public/speechtotext/{file_name}", file_name, 2)
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    if sys.argv[2] == "true":
+        try:
+            main(sys.argv[1])
+            sys.stdout.write("Success")
+        except:
+            sys.stdout.write("Error Occurred")
+    else:
+        main(sys.argv[1])
+

@@ -36,7 +36,7 @@ router.post("/", async(req, res) => {
           py = spawn('python', ['converter.py', req.file.filename.toString(), "false"])
         }
         else if(hasbin.sync('python3') === true) {
-          py = spawn('python3', ['converter.py', req.file.filename.toString(), "false"]);
+          py = spawn('python3', ['converter.py', req.file.filename.toString(), "false"])
         }
         else {
           return res.status(500).send("Python not found!!! :(")

@@ -3,6 +3,7 @@ const cors = require('cors')
 
 const speechRoute = require('./routes/speechtotext')
 const meetingRoute = require('./routes/meetingsummarisation')
+const summaryRoute = require('./routes/textsummarisation')
 
 const app = express()
 
@@ -17,6 +18,8 @@ app.get('/', async(req, res) => {
 })
 
 app.use('/speechtotext', speechRoute)
+app.use('/meetingsummarisation', meetingRoute)
+app.use('/textsummarisation', summaryRoute)
 
 const PORT = process.env.PORT || 5000
 
