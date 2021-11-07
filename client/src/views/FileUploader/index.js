@@ -66,6 +66,7 @@ const FileUploader = (props) => {
         }
 
         let endpoint = props.action.toLowerCase();
+        console.log(endpoint);
         let downloadName = endpoint === "speechtotext" ? "transcript" : "summary";
 
         try {

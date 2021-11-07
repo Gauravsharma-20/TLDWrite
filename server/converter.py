@@ -57,7 +57,8 @@ try:
   file.write(whole_text)
   file.close()
 
-  summarizer.main(txtFileName)
+  if sys.argv[2] != "false":
+    summarizer.main(txtFileName)
   sys.stdout.write("Success")
   shutil.rmtree(folder_name)
 except:
