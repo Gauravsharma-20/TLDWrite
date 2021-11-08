@@ -47,7 +47,7 @@ try:
       try:
         text = r.recognize_google(audio_listened)
       except sr.UnknownValueError as e:
-        sys.stdout.write("Error Occured "+str(e))
+        sys.stdout.write("Chunk parsing error: "+str(e))
       else:
         text = f"{text.capitalize()}. "
         whole_text += text
