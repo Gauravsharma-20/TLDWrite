@@ -13,9 +13,9 @@ const HomePage=()=>{
   return (
     <div id="hp01Homepage">
       <div className="hp01TopBar">
-        <div className="hp01In">
+        {/* <div className="hp01In">
           Sign In &nbsp; &nbsp; &nbsp;Sign Up
-        </div>
+        </div> */}
       </div> 
       <div className="hp01Summariser">
         Meeting Assistant<br/>
