@@ -5,8 +5,8 @@ import numpy as np
 import networkx as nx
 import os
 
-# import nltk
-# nltk.download('stopwords')
+import nltk
+nltk.download('stopwords')
 
 def read_article(file_name):
     file = open(file_name, "r")

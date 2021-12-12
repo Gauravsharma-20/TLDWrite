@@ -1,2 +1,5 @@
 /node_modules
 /__pycache__
+/ML/SpeechRecognition-V1/.ipynb_checkpoints
+/ML/SpeechRecognition-V1/train
+/ML/SpeechRecognition-V1/test
