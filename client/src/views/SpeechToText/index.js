@@ -1,4 +1,4 @@
-import FileUploader from "../FileUploader";
+import FileUploader from "../../common/fileUploader";
 
 const SpeechToText = () => {
     return <FileUploader action="SpeechToText"/>
