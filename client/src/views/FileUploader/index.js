@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { ProgressBar } from 'react-bootstrap';
+import { useState, useRef,memo } from 'react';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 import FileDownload from 'js-file-download';
@@ -9,21 +8,23 @@ import axios from 'axios';
 import "react-toastify/dist/ReactToastify.css";
 import './fileUploader.css';
 
-const FileUploader = ({onSuccess}) => {
+const FileUploader = (props) => {
 
     const [file, setFile] = useState([]);
-    const [uploadPercentage, setUploadPercentage]=useState(0);
+    const [loadingState, setLoadingState] = useState(false);
 
+    const inputFile = useRef(null);
+    
     const successToast=()=>{
-        toast("File Uploaded Successfully",{
+        toast("Result Computed Successfully",{
             className:"fp11Toast",
             draggable:true,
             position:toast.POSITION.TOP_CENTER 
          });
     }
     
-    const errorToast=()=>{
-        toast("Error In File Uploading",{
+    const errorToast=(message="Error In File Uploading")=>{
+        toast(message,{
             className:"fp11Toast",
             draggable:true,
             position:toast.POSITION.TOP_CENTER 
@@ -31,71 +32,74 @@ const FileUploader = ({onSuccess}) => {
     }
     
     const onInputChange = (event) => {
-        setFile(event.target.files[0])
+        const file = event.target.files[0]; // accesing file
+        setFile(file); // 
     };
 
     const onSubmit = async (event) => {
         event.preventDefault();
 
+        setLoadingState(true);
         const data = new FormData();
         data.append('file', file);
 
-        const options = {
-            onUploadProgress: (progressEvent) => {
-              const {loaded, total} = progressEvent;
-              let percent = Math.floor( (loaded * 100) / total )
-              console.log( `${loaded}kb of ${total}kb | ${percent}%` );
-      
-              if( percent < 100 ){
-                setUploadPercentage(percent);
-              }
+        const config = {
+            headers: {
+                'content-type':'multipart/form-data'
             }
-          }
+        }
+
+        let endpoint = props.action.toLowerCase();
+        console.log(endpoint);
+        let downloadName = endpoint === "speechtotext" ? "transcript" : "summary";
 
         try {
-            const response = await axios.post('//localhost:5000/speechtotext', data, options)
-            // alert("Success");
+            const response = await axios.post(`//localhost:5000/${endpoint}`, data, config);
+            setLoadingState(false);
             successToast();
-            FileDownload(response.data, 'report.txt');
+            FileDownload(response.data, `${downloadName}.txt`);
+        } catch(e) {
+            if (e.response && e.response.data) {
+                errorToast(e.response.data.message); // some reason error message
+            }
+            else {
+                errorToast();
+            }
+            setLoadingState(false);
         }
-        catch(event) {
-            // alert(e);
-            errorToast();
-        }
-    };
+    
+    }
 
     return (
         <div className="fp11UploaderWrapper">
-        <form method="post" action="#" id="#" onSubmit={onSubmit}>
-            <label className="fp11Label">Upload Your File </label>
-            <div className="fp11FileUploader">
-                <div className="fp11formGroup fp01files"> 
-                <ToastContainer 
-                draggable={false}
-                transition={Bounce}
-                autoClose={5000}
-                />
-                <i class="fp11Icon fas fa-cloud-upload-alt"></i>
-                <header>Drag and Drop Files</header>
-                    <span>OR</span>
-                <button>Browse</button>
-                <input 
-                type="file" 
-                onDrop={onInputChange}
-                onDragOver={(event)=>{
-                    event.preventDefault();
-                    event.stopPropagation();
-                }}
-                onChange={onInputChange} 
-                className="fp11formControl" 
-                hidden
-                /> 
-                </div>
-            </div>     
-        </form>
-        { uploadPercentage > 0 ? <ProgressBar now={uploadPercentage} active label={`${uploadPercentage}%`} />:null }
+            <form method="post" action="#" id="#" onSubmit={onSubmit}>
+                <label className="fp11Label">Upload Your File </label>
+                <div className="fp11FileUploader">
+                    <div className="fp11formGroup fp01files"> 
+                    <ToastContainer 
+                    draggable={false}
+                    transition={Bounce}
+                    autoClose={1000}
+                    />
+                    <i className="fp11Icon fas fa-cloud-upload-alt"></i>
+                    <input
+                    type="file" 
+                    ref={inputFile}
+                    onChange={onInputChange} 
+                    className="fp11formControl" 
+                    /> 
+                    </div>
+                </div>     
+            </form>
+            <div className="fp11upbutton">
+                <button onClick={onSubmit}>                   
+                    Upload
+                </button>
+            </div>
+            {loadingState?
+                <div className="fp11loadmessage">The Result is being computed. Please wait for some time....</div> : null}
         </div>
     )
 };
 
-export default FileUploader;
+export default memo(FileUploader);

@@ -1,12 +1,13 @@
 import sys
-import nltk
 from nltk.corpus import stopwords
 from nltk.cluster.util import cosine_distance
-import os
 import numpy as np
 import networkx as nx
+import os
 
- 
+import nltk
+nltk.download('stopwords')
+
 def read_article(file_name):
     file = open(file_name, "r")
     filedata = file.readlines()
@@ -62,7 +63,7 @@ def output_summary(summarize_text, file_name):
     # print("Summarize Text: \n", ". ".join(summarize_text))
 
     #print to file
-    file1 = open(f"./public/textsummarization/{file_name}","w")
+    file1 = open(f"{os.path.dirname(os.path.realpath(__file__))}/public/textsummarization/{file_name}","w")
     file1.write(". ".join(summarize_text))
     file1.close()
 
@@ -94,8 +95,14 @@ def generate_summary(file_path, file_name, top_n):
 
 
 def main(file_name):
-    generate_summary(f"./public/speechtotext/{file_name}", file_name, 0.33)
-
+    generate_summary(f"{os.path.dirname(os.path.realpath(__file__))}/public/speechtotext/{file_name}", file_name, 0.33)
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    if sys.argv[2] == "true":
+        try:
+            main(sys.argv[1])
+            sys.stdout.write("Success")
+        except:
+            sys.stdout.write("Error Occurred")
+    else:
+        main(sys.argv[1])

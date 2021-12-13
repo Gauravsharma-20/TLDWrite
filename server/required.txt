@@ -1,2 +1,0 @@
-pip install nltk
-pip install networkx

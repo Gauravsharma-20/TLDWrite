@@ -1,19 +1,9 @@
 const express = require('express')
 const cors = require('cors')
-const multer = require('multer')
-const path = require('path')
-const mime = require('mime')
-const spawn = require('child_process').spawn
-const fs = require('fs')
 
-const storage = multer.diskStorage({
-    destination: "./public/uploads",
-    filename: function(req, file, cb){
-       cb(null, + Date.now() + path.extname(file.originalname));
-    }
-})
- 
-const upload = multer({ storage: storage }).single('file')
+const speechRoute = require('./routes/speechtotext')
+const meetingRoute = require('./routes/meetingsummarisation')
+const summaryRoute = require('./routes/textsummarisation')
 
 const app = express()
 
@@ -27,38 +17,9 @@ app.get('/', async(req, res) => {
     res.status(200).send('Connection Estabhlished!!')
 })
 
-app.post('/speechtotext', async (req, res) => {
-    
-    console.log('Post request received')
-
-    try {
-
-        upload(req, res, async () => {
-
-            const py = spawn('python', ['converter.py', req.file.filename.toString()])
-
-            py.stdout.on('data', data => {
-                const text = data.toString()
-
-                console.log(text)
-
-                if (text === "Error Occured") {
-                    return res.status(500).json({'text': text})
-                }
-
-                var fileName = req.file.filename.toString()
-                fileName = fileName.substring(0, fileName.indexOf('.'))+".txt"
-
-                const file = `${__dirname}\\public\\textsummarization\\${fileName}`
-                
-                res.download(file)
-            })
-        })
-    }
-    catch(ex) {
-        res.status(500).send("Some error occurred. Try again")
-    }
-})
+app.use('/speechtotext', speechRoute)
+app.use('/meetingsummarisation', meetingRoute)
+app.use('/textsummarisation', summaryRoute)
 
 const PORT = process.env.PORT || 5000
 

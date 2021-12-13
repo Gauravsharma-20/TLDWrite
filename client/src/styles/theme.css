@@ -1,0 +1,70 @@
+:root {
+  --gradientText: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+  --gradientBar: linear-gradient(103.22deg, #ae67fa -13.86%, #f49867 99.55%);
+
+  --colorBg: #040c18;
+  --colorFooter: #031b34;
+  --colorBlog: #042c54;
+  --colorText: #81afdd;
+  --colorSubtext: #ff8a71;
+
+  --fileUploaderColor: rgb(87, 74, 204);
+  --formGroupColor: blue;
+  --formGroupButtonColor: #5256ad;
+  --homePageBackgroundColor: rgba(79, 82, 82, 0.1);
+  --summariserColor: #004dff;
+  --textShadowColor: #00ff93;
+  --buttonColor: rgb(56, 70, 131);
+  --buttonBackgroundColor: rgba(79, 82, 82, 0.1);
+  --buttonHoverTextColor: #000;
+  --buttonBackgroundColorHover: #fff;
+}
+
+.gradientBackground {
+  /* ff 3.6+ */
+  background: -moz-radial-gradient(
+    circle at 30% -100%,
+    #042c54 25%,
+    rgba(4, 44, 84, 1) 85%,
+    rgba(27, 120, 222, 1) 100%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: radial-gradient(
+    circle at 30% -100%,
+    #042c54 25%,
+    rgb(12 22 32) 85%,
+    rgb(0 0 0) 100%
+  );
+
+  /* opera 11.10+ */
+  background: -o-radial-gradient(
+    circle at 30% -100%,
+    #042c54 25%,
+    rgba(4, 44, 84, 1) 85%,
+    rgba(27, 120, 222, 1) 100%
+  );
+
+  /* ie 10+ */
+  background: -ms-radial-gradient(
+    circle at 30% -100%,
+    #042c54 25%,
+    rgba(4, 44, 84, 1) 85%,
+    rgba(27, 120, 222, 1) 100%
+  );
+
+  /* global 92%+ browsers support */
+  background: radial-gradient(
+    circle at 30% -100%,
+    #042c54 25%,
+    rgba(4, 44, 84, 1) 85%,
+    rgba(27, 120, 222, 1) 100%
+  );
+}
+
+.gradientText {
+  background: var(--gradientText);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,27 @@
+.sectionPadding {
+  padding: 4rem 6rem;
+}
+
+.sectionMargin {
+  margin: 4rem 6rem;
+}
+
+@media screen and (max-width: 700px) {
+  .sectionPadding {
+    padding: 4rem;
+  }
+
+  .sectionMargin {
+    margin: 4rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .sectionPadding {
+    padding: 4rem 2rem;
+  }
+
+  .sectionMargin {
+    margin: 4rem 2rem;
+  }
+}
