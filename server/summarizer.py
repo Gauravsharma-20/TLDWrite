@@ -15,10 +15,10 @@ def read_article(file_name):
     sentences = []
 
     for sentence in article:
-        #print(sentence)
         sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
     
     return sentences
+
 
 def sentence_similarity(sent1, sent2, stopwords=None):
     if stopwords is None:
@@ -46,6 +46,7 @@ def sentence_similarity(sent1, sent2, stopwords=None):
  
     return 1 - cosine_distance(vector1, vector2)
  
+
 def build_similarity_matrix(sentences, stop_words):
     # Create an empty similarity matrix
     similarity_matrix = np.zeros((len(sentences), len(sentences)))
@@ -66,12 +67,14 @@ def output_summary(summarize_text, file_name):
     file1.write(". ".join(summarize_text))
     file1.close()
 
-def generate_summary(file_path, file_name, top_n=5):
+
+def generate_summary(file_path, file_name, top_n):
     stop_words = stopwords.words('english')
     summarize_text = []
 
-    # Step 1 - Read text anc split it
+    # Step 1 - Read text and split it
     sentences =  read_article(file_path)
+    top_n = int(top_n*len(sentences))
 
     # Step 2 - Generate Similary Martix across sentences
     sentence_similarity_martix = build_similarity_matrix(sentences, stop_words)
@@ -84,14 +87,15 @@ def generate_summary(file_path, file_name, top_n=5):
     ranked_sentence = sorted(((scores[i],s) for i,s in enumerate(sentences)), reverse=True)    
     #print("Indexes of top ranked_sentence order are ", ranked_sentence)    
 
-    for i in range(min(top_n, 1)):
+    for i in range(top_n):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
 
     # Step 5 - Print summary/ write to output file
     output_summary(summarize_text, file_name)
 
+
 def main(file_name):
-    generate_summary(f"{os.path.dirname(os.path.realpath(__file__))}/public/speechtotext/{file_name}", file_name, 2)
+    generate_summary(f"{os.path.dirname(os.path.realpath(__file__))}/public/speechtotext/{file_name}", file_name, 0.33)
 
 if __name__ == "__main__":
     if sys.argv[2] == "true":
@@ -102,4 +106,3 @@ if __name__ == "__main__":
             sys.stdout.write("Error Occurred")
     else:
         main(sys.argv[1])
-
