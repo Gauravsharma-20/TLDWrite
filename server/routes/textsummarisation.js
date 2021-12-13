@@ -28,7 +28,7 @@ router.post("/", async(req, res) => {
 
         if(path.extname(req.file.filename) !== ".txt") {
           return res.status(400).json({message: "Upload only .txt files"})
-        }
+        } 
 
         let py;
         
