@@ -1,6 +1,24 @@
 @font-face {
+  font-family: "ManropeLight";
+  font-style: normal;
+  src: url("./Manrope-Light.otf") format("woff");
+}
+
+@font-face {
+  font-family: "ManropeRegular";
+  font-style: normal;
+  src: url("./Manrope-Regular.otf") format("woff");
+}
+
+@font-face {
+  font-family: "ManropeSemiBold";
+  font-style: normal;
+  src: url("./Manrope-SemiBold.otf") format("woff");
+}
+
+/* @font-face {
   font-family: "Brusher";
   font-style: normal;
-  src: url("./Brusher.woff2") format("woff2"),
+  src: url("./Brusher.woff2") format("woff2"),          //Dont Delete this
     url("./Brusher.woff") format("woff");
-}
+} */
