@@ -12,6 +12,7 @@ form {
 .fp11Label {
   margin: 60px;
   font-size: 40px;
+  color: var(--colorText);
 }
 
 .fp11FileUploader {
@@ -22,6 +23,10 @@ form {
   border-radius: 5px;
   padding: 70px;
   width: 20%;
+}
+
+.fp11FileUploader input {
+  color: #fff;
 }
 
 .fp11formGroup {
@@ -63,11 +68,26 @@ form {
 }
 
 .fp11upbutton button {
-  font-size: 30px;
+  flex: 0.2;
+  width: 10%;
+  min-height: 50px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  background: #ff4820;
+  border: 2px solid #ff4820;
+  padding: 0 1rem;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  margin-top: 2rem;
+  border-radius: 5px;
 }
 
 .fp11loadmessage {
   text-align: center;
   margin-top: 40px;
-  font-size: 20px;
+  font-size: 25px;
+  letter-spacing: 0.04rem;
+  color: var(--colorText);
 }

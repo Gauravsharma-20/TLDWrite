@@ -1,5 +1,4 @@
-import { useState, useRef, memo } from 'react';
-import { ProgressBar } from 'react-bootstrap';
+import { useState, useRef,memo } from 'react';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 import FileDownload from 'js-file-download';
@@ -12,11 +11,10 @@ import './fileUploader.css';
 const FileUploader = (props) => {
 
     const [file, setFile] = useState([]);
-    const [uploadPercentage, setUploadPercentage]=useState(0);
     const [loadingState, setLoadingState] = useState(false);
 
     const inputFile = useRef(null);
-
+    
     const successToast=()=>{
         toast("Result Computed Successfully",{
             className:"fp11Toast",
@@ -34,7 +32,6 @@ const FileUploader = (props) => {
     }
     
     const onInputChange = (event) => {
-        setUploadPercentage(0);
         const file = event.target.files[0]; // accesing file
         setFile(file); // 
     };
@@ -45,19 +42,6 @@ const FileUploader = (props) => {
         setLoadingState(true);
         const data = new FormData();
         data.append('file', file);
-
-        // const options = {
-        //     onUploadProgress: (progressEvent) => {
-        //       const {loaded, total} = progressEvent;
-        //       let percent = Math.floor( (loaded * 100) / total )
-        //       console.log( `${loaded}kb of ${total}kb | ${percent}%` );
-      
-        //       if( percent < 100 ){
-        //         setUploadPercentage(percent);
-        //       }
-
-        //     }
-        //   }
 
         const config = {
             headers: {
@@ -98,15 +82,12 @@ const FileUploader = (props) => {
                     autoClose={1000}
                     />
                     <i className="fp11Icon fas fa-cloud-upload-alt"></i>
-                    {/* <header>Drag and Drop Files</header>
-                        <span>OR</span> */}
                     <input
                     type="file" 
                     ref={inputFile}
                     onChange={onInputChange} 
                     className="fp11formControl" 
                     /> 
-                    {/* { uploadPercentage > 0 ? <ProgressBar now={uploadPercentage} active label={`${uploadPercentage}%`} />:null } */}
                     </div>
                 </div>     
             </form>
