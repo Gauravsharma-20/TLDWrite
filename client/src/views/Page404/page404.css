@@ -1,0 +1,20 @@
+.pg44pageNotFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: 30px;
+}
+.pg44Number {
+  font-size: 100px;
+}
+
+.pg44Oops {
+  margin: 2%;
+}
+
+.pg44TextMsg {
+  width: 58%;
+  text-align: center;
+}
