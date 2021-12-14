@@ -1,5 +1,5 @@
 .sectionPadding {
-  padding: 0rem 6rem;
+  padding: 4rem 6rem;
 }
 
 .sectionMargin {
@@ -8,7 +8,7 @@
 
 @media screen and (max-width: 700px) {
   .sectionPadding {
-    padding: 0rem 3rem;
+    padding: 4rem;
   }
 
   .sectionMargin {
@@ -18,7 +18,7 @@
 
 @media screen and (max-width: 550px) {
   .sectionPadding {
-    padding: 0rem 2rem;
+    padding: 4rem 2rem;
   }
 
   .sectionMargin {
