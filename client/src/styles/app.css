@@ -19,6 +19,7 @@ a {
   text-decoration: none;
 }
 
-button {
+button,
+input {
   font-family: inherit;
 }
