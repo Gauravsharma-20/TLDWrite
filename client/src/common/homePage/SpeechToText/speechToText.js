@@ -13,11 +13,11 @@ const SpeechToText = () => {
   }
 
   return ( 
-    <div className="gpt3__possibility sectionPadding" id="SpeechToText">
-      <div className="gpt3__possibility-image">
+    <div className="sr121Container sectionPadding" id="speechToText">
+      <div className="sr121ContainerImage">
         <img src={mlvoice} alt="SpeechToText" />
       </div>
-      <div className="gpt3__possibility-content">
+      <div className="sr121Content">
         <h1 className="gradientText">Speech service feature that  <br /> accurately transcribes spoken audio to text </h1>
         <p>Speech is the most common means of communication and the majority of the population in the world relies on speech to communicate with one another. Speech recognition system basically translates spoken languages into text.</p>
         <div className="sr121Button">

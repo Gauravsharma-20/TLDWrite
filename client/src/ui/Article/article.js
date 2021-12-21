@@ -3,11 +3,11 @@ import React from 'react';
 import './article.css';
 
 const Article = ({ imgUrl, title, link }) => (
-  <div className="gpt3__blog-container_article">
-    <div className="gpt3__blog-container_article-image">
-      <img src={imgUrl} alt="blog_image" />
+  <div className="ar91container">
+    <div className="ar91containerImage">
+      <img src={imgUrl} alt="blogImage" />
     </div>
-    <div className="gpt3__blog-container_article-content">
+    <div className="ar91containerContent">
       <div>
         <h3>{title}</h3>
       </div>

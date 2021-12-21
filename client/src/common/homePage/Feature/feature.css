@@ -1,4 +1,4 @@
-.gpt3__features-container__feature {
+.f14FeatureContainer {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -8,13 +8,13 @@
   margin: 1rem;
 }
 
-.gpt3__features-container__feature-title {
+.f14FeatureTitle {
   flex: 1;
   max-width: 180px;
   margin-right: 2rem;
 }
 
-.gpt3__features-container__feature-title h1 {
+.f14FeatureTitle h1 {
   font-weight: 800;
   font-size: 22px;
   line-height: 28px;
@@ -22,7 +22,7 @@
   color: #fff;
 }
 
-.gpt3__features-container__feature-title div {
+.f14FeatureTitle div {
   width: 38px;
   height: 3px;
   background: var(--gradientBar);
@@ -30,13 +30,13 @@
   margin-bottom: 0.25rem;
 }
 
-.gpt3__features-container_feature-text {
+.f14FeatureText {
   flex: 2;
   max-width: 390px;
   display: flex;
 }
 
-.gpt3__features-container_feature-text p {
+.f14FeatureText p {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -44,17 +44,17 @@
 }
 
 @media screen and (max-width: 550px) {
-  .gpt3__features-container__feature-title h1 {
+  .f14FeatureTitle h1 {
     font-size: 14px;
     line-height: 22px;
   }
 
-  .gpt3__features-container_feature-text p {
+  .f14FeatureText p {
     font-size: 14px;
     line-height: 20px;
   }
 
-  .gpt3__features-container__feature {
+  .f14FeatureContainer {
     margin: 1rem 0;
   }
 }

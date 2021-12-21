@@ -31,28 +31,28 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
-    <div className="gpt3__navbar nv11navbar">
-      <div className="gpt3__navbar-links nv11navbarLinks">
-        <div className="gpt3__navbar-links_logo nv11navbarLinksLogo">
+    <div className="nv11navbar">
+      <div className="nv11navbarLinks">
+        <div className="nv11navbarLinksLogo">
           <img src={logo} alt="logo" height="90" width="90"/>
           </div>
-        <div className="gpt3__navbar-links_container nv11navbarLinksContainer">
+        <div className="nv11navbarLinksContainer">
           <Menu/>
         </div>
       </div>
-      <div className="gpt3__navbar-sign nv11navbarLinksSign">
+      <div className="nv11navbarLinksSign">
       <Authentication/>
       </div>
-      <div className="gpt3__navbar-menu nv11navbarMenu">
+      <div className="nv11navbarMenu">
         {toggleMenu
           ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
           : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
         {toggleMenu ? (
-        <div className="gpt3__navbar-menu_container scale-up-center nv11navbarMenuContainer">
-          <div className="gpt3__navbar-menu_container-links nv11navbarMenuLinks">
+        <div className="scale-up-center nv11navbarMenuContainer">
+          <div className="nv11navbarMenuLinks">
             <Menu/>
           </div>
-          <div className="gpt3__navbar-menu_container-links-sign nv11navbarMenuSigns">
+          <div className="nv11navbarMenuSigns">
           <Authentication/>
           </div>
         </div>

@@ -14,18 +14,18 @@ const Header = () =>{
     }
 
   return(
-    <div className="gpt3__header sectionPadding" id="home">
-        <div className="gpt3__header-content">
+    <div className="h19Header sectionPadding" id="home">
+        <div className="h19HeaderContent">
         <h1 className="gradientText">
             Let&apos;s summarise Meetings with TLDWrite</h1>
         <p>Convenient and always in reach. Use your smartphone in the office or on the go with your customers. Straight from your pocket to perfectly organized and precisely-captured meeting notes. TLDWrite will back you up with smart automated meeting summaries, wherever you are, to keep your knowledge available for you.</p>
 
-        <div className="gpt3__header-content__input">
+        <div className="h19HeaderContentInput">
             <button type="button" onClick={() => handleButtonClick("MeetingSummariser")}>Get Started</button>
         </div>
         </div>
 
-        <div className="gpt3__header-image">
+        <div className="h19HeaderImage">
         <img src={ai} alt="aiImage"/>
         </div>
     </div>

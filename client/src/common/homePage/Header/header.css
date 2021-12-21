@@ -1,9 +1,9 @@
-.gpt3__header {
+.h19Header {
   display: flex;
   flex-direction: row;
 }
 
-.gpt3__header-content {
+.h19HeaderContent {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -13,14 +13,14 @@
   margin-right: 5rem;
 }
 
-.gpt3__header-content h1 {
+.h19HeaderContent h1 {
   font-weight: 800;
   font-size: 62px;
   line-height: 75px;
   letter-spacing: -0.04em;
 }
 
-.gpt3__header-content p {
+.h19HeaderContent p {
   font-weight: 400;
   font-size: 20px;
   line-height: 32px;
@@ -29,7 +29,7 @@
   margin-top: 1.5rem;
 }
 
-.gpt3__header-content__input {
+.h19HeaderContentInput {
   width: 100%;
   margin: 2rem 0 1rem;
 
@@ -37,7 +37,7 @@
   flex-direction: row;
 }
 
-.gpt3__header-content__input input {
+.h19HeaderContentInput input {
   flex: 2;
   width: 100%;
   min-height: 50px;
@@ -54,7 +54,7 @@
   border-bottom-left-radius: 5px;
 }
 
-.gpt3__header-content__input button {
+.h19HeaderContentInput button {
   flex: 0.2;
   width: 100%;
   min-height: 50px;
@@ -71,90 +71,58 @@
   border-radius: 5px;
 }
 
-.gpt3__header-content__people {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: row;
-
-  margin-top: 2rem;
-}
-
-.gpt3__header-content__people img {
-  width: 181.79px;
-  height: 38px;
-}
-
-.gpt3__header-content__people p {
-  margin: 0 0 0 1rem;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 38px;
-  color: #fff;
-  text-align: center;
-}
-
-.gpt3__header-image {
+.h19HeaderImage {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.gpt3__header-image img {
+.h19HeaderImage img {
   width: 100%;
   height: 100%;
 }
 
 @media screen and (max-width: 1050px) {
-  .gpt3__header {
+  .h19Header {
     flex-direction: column;
   }
 
-  .gpt3__header-content {
+  .h19HeaderContent {
     margin: 0 0 3rem;
   }
 }
 
 @media screen and (max-width: 650px) {
-  .gpt3__header-content h1 {
+  .h19HeaderContent h1 {
     font-size: 48px;
     line-height: 60px;
   }
 
-  .gpt3__header-content p {
+  .h19HeaderContent p {
     font-size: 16px;
     line-height: 24px;
   }
 
-  .gpt3__header-content__people {
-    flex-direction: column;
-  }
-
-  .gpt3__header-content__people p {
-    margin: 0;
-  }
-
-  .gpt3__header-content__input input {
+  .h19HeaderContentInput input {
     font-size: 16px;
     line-height: 24px;
   }
 }
 
 @media screen and (max-width: 490px) {
-  .gpt3__header-content h1 {
+  .h19HeaderContent h1 {
     font-size: 36px;
     line-height: 48px;
   }
 
-  .gpt3__header-content p {
+  .h19HeaderContent p {
     font-size: 14px;
     line-height: 24px;
   }
 
-  .gpt3__header-content__input input,
-  .gpt3__header-content__input button {
+  .h19HeaderContentInput input,
+  .h19HeaderContentInput button {
     font-size: 12px;
     line-height: 16px;
   }

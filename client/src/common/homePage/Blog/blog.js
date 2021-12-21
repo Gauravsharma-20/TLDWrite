@@ -35,15 +35,15 @@ const blogLinks = [
     
 
 const Blog = () => (
-  <div className="gpt3__blog sectionPadding" id="blog">
-    <div className="gpt3__blog-heading">
+  <div className="bg11Blog sectionPadding" id="blog">
+    <div className="bg11BlogHeading">
       <h1 className="gradientText">A lot is happening about this, <br /> Our Refrences for Deep Learning.</h1>
     </div>
-    <div className="gpt3__blog-container">
-      <div className="gpt3__blog-container_groupA">
+    <div className="bg11BlogContainer">
+      <div className="bg11BlogContainerGroupA">
         <Article imgUrl={blog01} title={blogLinks[0].title} link={blogLinks[0].link} />
       </div>
-      <div className="gpt3__blog-container_groupB">
+      <div className="bg11BlogContainerGroupB">
         {blogLinks.map((item, index) => 
             <>
             {index ? 

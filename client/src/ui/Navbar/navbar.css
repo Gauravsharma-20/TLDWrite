@@ -1,4 +1,4 @@
-.gpt3__navbar {
+.nv11navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,31 +6,31 @@
   padding: 2rem 6rem;
 }
 
-.gpt3__navbar-links {
+.nv11navbarLinks {
   flex: 1;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.gpt3__navbar-links_logo img {
+.nv11navbarLinksLogo img {
   margin: 0.5rem 2rem 0 0;
 }
 
-.gpt3__navbar-links_container {
+.nv11navbarLinksContainer {
   display: flex;
   flex-direction: row;
 }
 
-.gpt3__navbar-sign {
+.nv11navbarLinksSign {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.gpt3__navbar-links_container p,
-.gpt3__navbar-sign p,
-.gpt3__navbar-menu_container p {
+.nv11navbarLinksContainer p,
+.nv11navbarLinksSign p,
+.nv11navbarMenuContainer p {
   color: #fff;
   font-weight: 500;
   font-size: 18px;
@@ -41,8 +41,8 @@
   cursor: pointer;
 }
 
-.gpt3__navbar-sign button,
-.gpt3__navbar-menu_container button {
+.nv11navbarLinksSign button,
+.nv11navbarMenuContainer button {
   padding: 0.5rem 1rem;
   color: #fff;
   background: #ff4820;
@@ -55,18 +55,18 @@
   border-radius: 5px;
 }
 
-.gpt3__navbar-menu {
+.nv11navbarMenu {
   margin-left: 1rem;
 
   display: none;
   position: relative;
 }
 
-.gpt3__navbar-menu svg {
+.nv11navbarMenu svg {
   cursor: pointer;
 }
 
-.gpt3__navbar-menu_container {
+.nv11navbarMenuContainer {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -84,7 +84,7 @@
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-.gpt3__navbar-menu_container p {
+.nv11navbarMenuContainer p {
   margin: 1rem 0;
 }
 
@@ -93,31 +93,31 @@
 }
 
 @media screen and (max-width: 1050px) {
-  .gpt3__navbar-links_container {
+  .nv11navbarLinksContainer {
     display: none;
   }
 
-  .gpt3__navbar-menu {
+  .nv11navbarMenu {
     display: flex;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .gpt3__navbar {
+  .nv11navbar {
     padding: 2rem 4rem;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .gpt3__navbar {
+  .nv11navbar {
     padding: 2rem;
   }
 
-  .gpt3__navbar-sign {
+  .nv11navbarLinksSign {
     display: none;
   }
 
-  .gpt3__navbar-menu_container {
+  .nv11navbarMenuContainer {
     top: 20px;
   }
 

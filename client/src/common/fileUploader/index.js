@@ -33,7 +33,7 @@ const FileUploader = (props) => {
     
     const onInputChange = (event) => {
         const file = event.target.files[0]; // accesing file
-        setFile(file); // 
+        setFile(file);
     };
 
     const onSubmit = async (event) => {
