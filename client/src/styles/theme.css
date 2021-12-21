@@ -7,6 +7,8 @@
   --colorBlog: #042c54;
   --colorText: #81afdd;
   --colorSubtext: #ff8a71;
+  --colorWhite: #fff;
+  --colorRed: #ff4820;
 
   --fileUploaderColor: rgb(87, 74, 204);
   --formGroupColor: blue;
@@ -17,7 +19,6 @@
   --buttonColor: rgb(56, 70, 131);
   --buttonBackgroundColor: rgba(79, 82, 82, 0.1);
   --buttonHoverTextColor: #000;
-  --buttonBackgroundColorHover: #fff;
 }
 
 .gradientBackground {

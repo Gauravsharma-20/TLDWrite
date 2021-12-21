@@ -58,10 +58,10 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 28px;
-  background: #ff4820;
-  border: 2px solid #ff4820;
+  background: var(--colorRed);
+  border: 2px solid var(--colorRed);
   padding: 0 1rem;
-  color: #fff;
+  color: var(--colorWhite);
   cursor: pointer;
   outline: none;
   margin-top: 2rem;

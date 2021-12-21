@@ -31,7 +31,7 @@
 .nv11navbarLinksContainer p,
 .nv11navbarLinksSign p,
 .nv11navbarMenuContainer p {
-  color: #fff;
+  color: var(--colorWhite);
   font-weight: 500;
   font-size: 18px;
   line-height: 25px;
@@ -44,8 +44,8 @@
 .nv11navbarLinksSign button,
 .nv11navbarMenuContainer button {
   padding: 0.5rem 1rem;
-  color: #fff;
-  background: #ff4820;
+  color: var(--colorWhite);
+  background: var(--colorRed);
   font-weight: 500;
   font-size: 18px;
   line-height: 25px;
@@ -99,7 +99,7 @@
 }
 
 .hover-underline-animation:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);

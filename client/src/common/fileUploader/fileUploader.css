@@ -26,7 +26,7 @@ form {
 }
 
 .fp11FileUploader input {
-  color: #fff;
+  color: var(--colorWhite);
   margin-left: 50px;
 }
 
@@ -37,7 +37,7 @@ form {
   align-items: center;
   font-size: 25px;
   font-weight: 500;
-  color: blue;
+  color: var(--formGroupColor);
 }
 
 .fp11Icon {
@@ -54,7 +54,7 @@ form {
   padding: 10px 20px;
   outline: none;
   cursor: pointer;
-  color: #5256ad;
+  color: var(--formGroupButtonColor);
   border-radius: 3px;
 }
 
@@ -75,10 +75,10 @@ form {
   font-weight: 400;
   font-size: 20px;
   line-height: 28px;
-  background: #ff4820;
-  border: 2px solid #ff4820;
+  background: var(--colorRed);
+  border: 2px solid var(--colorRed);
   padding: 0 1rem;
-  color: #fff;
+  color: var(--colorWhite);
   cursor: pointer;
   outline: none;
   margin-top: 2rem;
@@ -92,9 +92,9 @@ form {
   font-weight: 400;
   font-size: 14px;
   line-height: 28px;
-  background: #ff4820;
-  border: 2px solid #ff4820;
-  color: #fff;
+  background: var(--colorRed);
+  border: 2px solid var(--colorRed);
+  color: var(--colorWhite);
   cursor: pointer;
   outline: none;
   margin: 2rem 1rem 0 0.5rem;

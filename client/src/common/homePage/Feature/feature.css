@@ -19,7 +19,7 @@
   font-size: 22px;
   line-height: 28px;
   letter-spacing: -0.028em;
-  color: #fff;
+  color: var(--colorWhite);
 }
 
 .f14FeatureTitle div {
