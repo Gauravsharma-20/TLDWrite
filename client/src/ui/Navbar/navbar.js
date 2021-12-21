@@ -9,10 +9,10 @@ import './navbar.css';
 const Menu = () =>{
   return (
     <>
-    <p><a href="#home">Home</a></p>
-    <p><a href="#tldWrite">What is TLDWrite?</a></p>
-    <p><a href="#Summariser">Transcript Summarisation</a></p>
-    <p><a href="#SpeechToText">Speech to Text</a></p>
+    <p className="hover-underline-animation"><a href="#home">Home</a></p>
+    <p className="hover-underline-animation"><a href="#tldWrite">What is TLDWrite?</a></p>
+    <p className="hover-underline-animation"><a href="#Summariser">Transcript Summarisation</a></p>
+    <p className="hover-underline-animation"><a href="#SpeechToText">Speech to Text</a></p>
   </>
   )
   

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import './article.css';
+import "./article.css";
 
 const Article = ({ imgUrl, title, link }) => (
   <div className="ar91container">
@@ -11,7 +11,9 @@ const Article = ({ imgUrl, title, link }) => (
       <div>
         <h3>{title}</h3>
       </div>
-      <a href={link}>Read Full Article</a>
+      <a href={link} target="_blank">
+        Read Full Article
+      </a>
     </div>
   </div>
 );
