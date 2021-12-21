@@ -11,7 +11,7 @@ const Article = ({ imgUrl, title, link }) => (
       <div>
         <h3>{title}</h3>
       </div>
-      <a href={link} target="_blank">
+      <a href={link} target="_blank" rel="noreferrer">
         Read Full Article
       </a>
     </div>
