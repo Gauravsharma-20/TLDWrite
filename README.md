@@ -10,6 +10,9 @@ Thus, Final aim of this project is to build a Web App, Mobile App, Browser exten
 
 System contains 3 major features in this website namely, Speech-to-Text, Text Summarisation and Speech Summarisation. The version-1 of speech to text uses google web apis for conversion. The version-2 of speech to text is implemented using CNN which has four CONV1D layers and 2 dense layers and takes input as the spectrogram of speech audio. Version-1 of Text Summarisation uses the Cosine Similarity method to determine the sentences which provide the most amount of information to our final output. On an average we are able to decrease the textual content to 33.61% of the input through this method.  
 
+## Demo
+&nbsp;&nbsp;&nbsp;&nbsp;<img src="./resources/Demo.gif" width="85%" height="70%"><br>
+
 ## How to Use
 ### Install Server Dependencies
 1. Open terminal in server folder directory.
