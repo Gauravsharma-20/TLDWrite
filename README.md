@@ -18,6 +18,7 @@ System contains 3 major features in this website namely, Speech-to-Text, Text Su
 1. Open terminal in server folder directory.
 2. Run `npm i`.
 3. Run `pip install -r requirements.txt`.
+4. Run `pip install torch==1.8.2+cu111 torchvision==0.9.2+cu111 torchaudio===0.8.2 -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html`
 
 ### Run Server
 1. Run `node index.js` or `nodemon index.js` in server directory.
