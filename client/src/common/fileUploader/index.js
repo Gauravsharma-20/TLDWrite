@@ -8,6 +8,7 @@ import axios from 'axios';
 import "react-toastify/dist/ReactToastify.css";
 import './fileUploader.css';
 
+
 const FileUploader = (props) => {
 
     const [file, setFile] = useState([]);
@@ -15,7 +16,7 @@ const FileUploader = (props) => {
 
     const inputFile = useRef(null);
     
-    const successToast=()=>{
+    const successToast = () => {
         toast("Result Computed Successfully",{
             className:"fp11Toast",
             draggable:true,
@@ -23,7 +24,7 @@ const FileUploader = (props) => {
          });
     }
     
-    const errorToast=(message="Error In File Uploading")=>{
+    const errorToast = (message = "Error In File Uploading") => {
         toast(message,{
             className:"fp11Toast",
             draggable:true,
@@ -50,21 +51,24 @@ const FileUploader = (props) => {
         }
 
         let endpoint = props.action.toLowerCase();
-        console.log(endpoint);
         let downloadName = endpoint === "speechtotext" ? "transcript" : "summary";
-
+        
         try {
+            
             const response = await axios.post(`//localhost:5000/${endpoint}`, data, config);
+            debugger
             setLoadingState(false);
             successToast();
             FileDownload(response.data, `${downloadName}.txt`);
+        
         } catch(e) {
             if (e.response && e.response.data) {
                 errorToast(e.response.data.message); // some reason error message
-            }
-            else {
+            
+            } else {
                 errorToast();
             }
+
             setLoadingState(false);
         }
     

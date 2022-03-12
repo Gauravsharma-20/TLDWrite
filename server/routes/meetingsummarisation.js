@@ -16,12 +16,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single('file')
 
 router.post("/", async(req, res) => {
-  console.log('Post request received')
+  
+  console.log('Post request received: meetingsummarisation')
 
     try {
-
       upload(req, res, async () => {
-
         if (req.file === undefined) {
           return res.status(400).json({message:"No File Found. Try again"})
         }
@@ -32,6 +31,7 @@ router.post("/", async(req, res) => {
 
         let py;
         
+        //Running ASR for Speech-to-Text 
         if(hasbin.sync('python') === true) {
           py = spawn('python', ['converter.py', req.file.filename.toString(), "true"])
         }
@@ -44,7 +44,6 @@ router.post("/", async(req, res) => {
           
         py.stdout.on('data', data => {
           const text = data.toString()
-
           console.log(text)
 
           if (text === "Error Occurred") {
