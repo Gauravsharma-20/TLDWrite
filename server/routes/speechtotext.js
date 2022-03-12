@@ -3,9 +3,9 @@ const multer = require('multer')
 const path = require('path')
 const spawn = require('child_process').spawn
 const hasbin = require('hasbin')
-const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
-const ffmpeg = require('fluent-ffmpeg');
-ffmpeg.setFfmpegPath(ffmpegPath);
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path
+const ffmpeg = require('fluent-ffmpeg')
+ffmpeg.setFfmpegPath(ffmpegPath)
 
 const router = express.Router()
 
@@ -52,6 +52,7 @@ router.post("/", async(req, res) => {
         }
 
         let py;
+        req.file.filename = req.file.filename.toString().slice(0, -4)+'.wav'
         
         if(hasbin.sync('python') === true) {
           py = spawn('python', ['converter.py', req.file.filename.toString(), "false"])
