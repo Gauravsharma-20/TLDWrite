@@ -4,6 +4,7 @@ import sys
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import summarizer
+import summarizerV2
 import shutil
 
 try:
@@ -62,4 +63,5 @@ try:
   sys.stdout.write("Success")
   shutil.rmtree(folder_name)
 except:
+  shutil.rmtree(folder_name)
   sys.stdout.write("Error Occurred")
