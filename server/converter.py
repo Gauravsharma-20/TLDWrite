@@ -3,7 +3,6 @@ import os
 import sys
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
-import summarizer
 import summarizerV2
 import shutil
 
@@ -59,9 +58,9 @@ try:
   file.close()
 
   if sys.argv[2] != "false":
-    summarizer.main(txtFileName)
-  sys.stdout.write("Success")
+    summarizerV2.main(txtFileName)
+  sys.stdout.write("Success: converter.py")
   shutil.rmtree(folder_name)
 except:
   shutil.rmtree(folder_name)
-  sys.stdout.write("Error Occurred")
+  sys.stdout.write("Error Occurred: converter.py")
