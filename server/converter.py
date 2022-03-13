@@ -45,7 +45,7 @@ try:
       audio_listened = r.record(source)
       # try converting it to text
       try:
-        text = r.recognize_google(audio_listened)
+        text = r.recognize_google(audio_listened, language='en-IN')
       except sr.UnknownValueError as e:
         sys.stdout.write("Chunk parsing error: "+str(e))
       else:
