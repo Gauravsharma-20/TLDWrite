@@ -3,6 +3,8 @@ const multer = require('multer')
 const path = require('path')
 const spawn = require('child_process').spawn
 const hasbin = require('hasbin')
+const fs = require("fs");
+
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path
 const ffmpeg = require('fluent-ffmpeg')
 ffmpeg.setFfmpegPath(ffmpegPath)
@@ -47,7 +49,7 @@ router.post("/", async(req, res) => {
             .on('end', () => {
                 console.log('Processing finished !');
             })
-            .save(`${path.resolve('./')}\\public\\uploads\\${req.file.filename.toString().slice(0, -4)}`+'.wav');
+            .save(`${path.resolve('./')}/public/uploads/${req.file.filename.toString().slice(0, -4)}`+'.wav');
         }
 
         let py;
@@ -75,9 +77,13 @@ router.post("/", async(req, res) => {
           var fileName = req.file.filename.toString()
           fileName = fileName.substring(0, fileName.indexOf('.'))+".txt"
 
-          const file = `${path.resolve('./')}/public/textsummarization/${fileName}`
-          
-          res.download(file)
+          //const file = `${path.resolve('./')}/public/textsummarization/${fileName}`
+
+          const content = fs.readFileSync(`./public/textsummarization/${fileName}`).toString();
+
+          // res.download(file)
+          console.log(content)
+          res.status(200).json({content: content})
         })
       })
     }
