@@ -1,5 +1,4 @@
 import sys
-from nltk.corpus import stopwords
 import os
 
 # Bart-Large-CNN
@@ -67,14 +66,14 @@ def main(file_name = "test_sample.txt"):
 
 
 if __name__ == "__main__":
-  sys.argv.append('1636351012109.txt')
-  sys.argv.append(True)
+  # sys.argv.append('1636351012109.txt')
+  # sys.argv.append(True)
 
   if sys.argv[2] == "true":
     try:
       main(sys.argv[1])
       sys.stdout.write("Success")
     except:
-      sys.stdout.write("Error Occurred")
+      sys.stdout.write("Error Occurred: summarizerV2.py")
   else:
     main(sys.argv[1])
