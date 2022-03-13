@@ -41,16 +41,12 @@ def generate_summary(file_path, file_name):
   # Create tokens - number representation of our text
   tokens = tokenizer(sentences, truncation = True, padding = "longest", return_tensors = "pt")
 
-  # Input tokens
-  print(tokens)
-
   # Summarize 
   summarize_text = model.generate(**tokens)
 
-  print(summarize_text[0])
-
   output = []
 
+  #Trim extra characters
   summary = tokenizer.decode(summarize_text[0]).split('.')
   summary[0] = summary[0][7:]
   
