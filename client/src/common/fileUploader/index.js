@@ -2,8 +2,6 @@ import { useState, useRef,memo } from 'react';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 import { saveAs } from 'file-saver';
-//import FileDownload from 'js-file-download';
-
 import axios from 'axios';
 
 import "react-toastify/dist/ReactToastify.css";
@@ -55,14 +53,10 @@ const FileUploader = (props) => {
         let downloadName = endpoint === "speechtotext" ? "transcript" : "summary";
         
         try {
-            
             const response = await axios.post(`//localhost:5000/${endpoint}`, data, config);
             debugger
             
-            if(response?.data) {
-                // const fileName = response.data.fileName;
-                // const filePath = `../../../../server/public/${downloadName==="summary"?'textsummarization':'speechtotext'}/${fileName}`;
-                
+            if(response?.data) {                
                 const content = response.data.content;
                 const filename = `${file.name.slice(0,-4)}_${downloadName}.txt`;
 
@@ -74,7 +68,7 @@ const FileUploader = (props) => {
 
                 setLoadingState(false);
                 successToast();
-                // FileDownload(filePath, `${downloadName}.txt`);
+
             } else {
                 throw new Error(response);
             }    

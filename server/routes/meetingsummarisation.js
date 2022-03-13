@@ -33,10 +33,10 @@ router.post("/", async(req, res) => {
         if(path.extname(req.file.filename) !== ".mp3" && path.extname(req.file.filename) !== ".wav") {
           return res.status(400).json({message: "Upload only .wav and .mp3 files"})
         }
-        // console.log(req.file.filename.toString())
-        // console.log(`${path.resolve('./')}\\public\\uploads\\${req.file.filename.toString()}`)
+
         if(path.extname(req.file.filename) === ".mp3") {
-          let track = `${path.resolve('./')}\\public\\uploads\\${req.file.filename.toString()}`
+          let track = `${path.resolve('./')}/public/uploads/${req.file.filename.toString()}`
+          
           ffmpeg(track)
             .toFormat('wav')
             .on('error', (err) => {
@@ -77,11 +77,8 @@ router.post("/", async(req, res) => {
           var fileName = req.file.filename.toString()
           fileName = fileName.substring(0, fileName.indexOf('.'))+".txt"
 
-          //const file = `${path.resolve('./')}/public/textsummarization/${fileName}`
-
           const content = fs.readFileSync(`./public/textsummarization/${fileName}`).toString();
 
-          // res.download(file)
           console.log(content)
           res.status(200).json({content: content})
         })
