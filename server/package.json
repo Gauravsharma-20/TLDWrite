@@ -11,13 +11,17 @@
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.19.2",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "fluent-ffmpeg": "^2.1.2",
+    "gridfs-stream": "^1.1.1",
     "hasbin": "^1.2.3",
     "mime": "^2.5.2",
+    "mongoose": "^6.2.6",
     "multer": "^1.4.3",
+    "multer-gridfs-storage": "^5.0.2",
     "nodemon": "^2.0.14",
     "play-sound": "^1.1.3"
   }
