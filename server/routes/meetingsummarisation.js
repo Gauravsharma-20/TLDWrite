@@ -30,8 +30,8 @@ router.post("/", async(req, res) => {
           return res.status(400).json({message:"No File Found. Try again"})
         }
 
-        if(path.extname(req.file.filename) !== ".mp3" && path.extname(req.file.filename) !== ".wav") {
-          return res.status(400).json({message: "Upload only .wav and .mp3 files"})
+        if(path.extname(req.file.filename) !== ".mp4" && path.extname(req.file.filename) !== ".mp3" && path.extname(req.file.filename) !== ".wav") {
+          return res.status(400).json({message: "Upload only .wav or .mp3 or .mp4 files"})
         }
 
         if(path.extname(req.file.filename) === ".mp3") {
@@ -52,9 +52,27 @@ router.post("/", async(req, res) => {
             .save(`${path.resolve('./')}/public/uploads/${req.file.filename.toString().slice(0, -4)}`+'.wav');
         }
 
+        if(path.extname(req.file.filename) === ".mp4")
+        {
+          let track = `${path.resolve('./')}/public/uploads/${req.file.filename.toString()}`
+          ffmpeg(track)
+            .toFormat('wav')
+            .on('error', (err) => {
+                console.log('An error occurred: ' + err.message);
+            })
+            .on('progress', (progress) => {
+                // console.log(JSON.stringify(progress));
+                console.log('Processing: ' + progress.targetSize + ' KB converted');
+            })
+            .on('end', () => {
+                console.log('Processing finished !');
+            })
+            .save(`${path.resolve('./')}/public/uploads/${req.file.filename.toString().slice(0, -4)}`+'.wav');
+        }
+
         let py;
         req.file.filename = req.file.filename.toString().slice(0, -4)+'.wav'
-        
+        console.log(req.file.filename)
         //Running ASR for Speech-to-Text 
         if(hasbin.sync('python') === true) {
           py = spawn('python', ['converter.py', req.file.filename.toString(), "true"])

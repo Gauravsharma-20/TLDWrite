@@ -57,19 +57,23 @@ def generate_summary(file_path, file_name):
 
 
 def main(file_name = "test_sample.txt"):
-  
-  generate_summary(f"{os.path.dirname(os.path.realpath(__file__))}/public/speechtotext/{file_name}", file_name)
+  try:
+    sys.stdout.write('Summarizer Started\n')
+    generate_summary(f"{os.path.dirname(os.path.realpath(__file__))}/public/speechtotext/{file_name}", file_name)
+    sys.stdout.write("Success: summarizerV2.py\n")
+  except:
+    sys.stdout.write("Error Occurred: summarizerV2.py\n")
 
 
 if __name__ == "__main__":
-  # sys.argv.append('1636351012109.txt')
-  # sys.argv.append(True)
+  sys.argv.append('1647150371664.txt')
+  sys.argv.append("true")
 
   if sys.argv[2] == "true":
     try:
       main(sys.argv[1])
-      sys.stdout.write("Success")
+      sys.stdout.write("Success: summarizerV2.py\n")
     except:
-      sys.stdout.write("Error Occurred: summarizerV2.py")
+      sys.stdout.write("Error Occurred: summarizerV2.py\n")
   else:
     main(sys.argv[1])
