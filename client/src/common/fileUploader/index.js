@@ -1,7 +1,8 @@
 import { useState, useRef,memo } from 'react';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 
-import FileDownload from 'js-file-download';
+import { saveAs } from 'file-saver';
+//import FileDownload from 'js-file-download';
 
 import axios from 'axios';
 
@@ -57,11 +58,29 @@ const FileUploader = (props) => {
             
             const response = await axios.post(`//localhost:5000/${endpoint}`, data, config);
             debugger
-            setLoadingState(false);
-            successToast();
-            FileDownload(response.data, `${downloadName}.txt`);
+            
+            if(response?.data) {
+                // const fileName = response.data.fileName;
+                // const filePath = `../../../../server/public/${downloadName==="summary"?'textsummarization':'speechtotext'}/${fileName}`;
+                
+                const content = response.data.content;
+                const filename = `${file.name.slice(0,-4)}_${downloadName}.txt`;
+
+                const blob = new Blob([content], {
+                type: "text/plain;charset=utf-8"
+                });
+
+                saveAs(blob, filename);
+
+                setLoadingState(false);
+                successToast();
+                // FileDownload(filePath, `${downloadName}.txt`);
+            } else {
+                throw new Error(response);
+            }    
         
         } catch(e) {
+            debugger
             if (e.response && e.response.data) {
                 errorToast(e.response.data.message); // some reason error message
             
