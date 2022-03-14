@@ -4,9 +4,6 @@ import os
 # Bart-Large-CNN
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-# Pegasus
-#from transformers import PegasusForConditionalGeneration, PegasusTokenizer
-
 
 def read_article(file_name):
   file = open(file_name, "r")
@@ -16,9 +13,6 @@ def read_article(file_name):
 
 
 def output_summary(summarize_text, file_name):
-  # print("Summarize Text: \n", ". ".join(summarize_text)
-
-  #print to file
   file1 = open(f"{os.path.dirname(os.path.realpath(__file__))}/public/textsummarization/{file_name}","w")
   file1.write(".\n".join(summarize_text))
   file1.close()
@@ -27,10 +21,6 @@ def output_summary(summarize_text, file_name):
 def generate_summary(file_path, file_name):
   # Read and make string of entire file
   sentences =  read_article(file_path)
-
-  # Use Pegasus-xsum
-  #tokenizer = PegasusTokenizer.from_pretrained("google/pegasus-xsum")
-  #model = PegasusForConditionalGeneration.from_pretrained("google/pegasus-xsum")
 
   # Load tokenizer 
   tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
@@ -66,8 +56,8 @@ def main(file_name = "test_sample.txt"):
 
 
 if __name__ == "__main__":
-  sys.argv.append('1647150371664.txt')
-  sys.argv.append("true")
+  # sys.argv.append('msft.txt')
+  # sys.argv.append("true")
 
   if sys.argv[2] == "true":
     try:
