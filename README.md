@@ -1,7 +1,8 @@
 # TLDWrite <a href="http://tld-write.herokuapp.com/" target="_blank">[Live]</a>
 
 ## Overview
-Meeting summarizer to generate important points and actionables from any meeting, lecture and transcript.
+<b>[Web App] [Mobile App] [Browser Extension]</b> <br/>
+Meeting summarizer to generate important points and actionables from any meeting, lecture and transcript. (Support for WAV, MP4, MP3)
 
 ## Aim & Abstract
 Meeting Summarisation is a way of effectively capturing the important details of any meeting for the ones who missed it and also to provide a better and concise summary to the concerned people. In almost all of modern meetings there are dedicated professionals just for the task of making notes of meeting and writing minutes of meeting. Often, they can, due to human error, miss out on certain important conversation points of the meetings. Additionally, this necessity of a dedicated individual facilitates the need of innovation. Innovation involves bringing ideas and technology together to ease the task of humans in every sphere of life.  
