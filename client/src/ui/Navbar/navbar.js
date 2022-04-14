@@ -12,7 +12,7 @@ const Menu = () =>{
     <p className="hover-underline-animation"><a href="#home">Home</a></p>
     <p className="hover-underline-animation"><a href="#tldWrite">What is TLDWrite?</a></p>
     <p className="hover-underline-animation"><a href="#Summariser">Transcript Summarisation</a></p>
-    <p className="hover-underline-animation"><a href="#SpeechToText">Speech to Text</a></p>
+    <p className="hover-underline-animation"><a href="#speechToText">Speech to Text</a></p>
   </>
   )
   
@@ -41,7 +41,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="nv11navbarLinksSign">
-      <Authentication/>
+      {/* <Authentication/> */}
       </div>
       <div className="nv11navbarMenu">
         {toggleMenu
@@ -53,7 +53,7 @@ const Navbar = () => {
             <Menu/>
           </div>
           <div className="nv11navbarMenuSigns">
-          <Authentication/>
+          {/* <Authentication/> */}
           </div>
         </div>
         ):null}

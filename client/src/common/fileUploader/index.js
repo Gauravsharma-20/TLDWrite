@@ -54,9 +54,8 @@ const FileUploader = (props) => {
         
         try {
             const response = await axios.post(`//localhost:5000/${endpoint}`, data, config);
-            debugger
             
-            if(response?.data) {                
+            if(response?.data) {               
                 const content = response.data.content;
                 const filename = `${file.name.slice(0,-4)}_${downloadName}.txt`;
 
@@ -74,7 +73,6 @@ const FileUploader = (props) => {
             }    
         
         } catch(e) {
-            debugger
             if (e.response && e.response.data) {
                 errorToast(e.response.data.message); // some reason error message
             
