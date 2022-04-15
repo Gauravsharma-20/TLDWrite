@@ -53,10 +53,10 @@ const FileUploader = (props) => {
         let downloadName = endpoint === "speechtotext" ? "transcript" : "summary";
         
         try {
-            const response = await axios.post(`//localhost:5000/${endpoint}`, data, config);
-            
+            const response = await axios.post(`http://localhost:8080/${endpoint}`, data, config);
+
             if(response?.data) {               
-                const content = response.data.content;
+                const content = response.data;
                 const filename = `${file.name.slice(0,-4)}_${downloadName}.txt`;
 
                 const blob = new Blob([content], {

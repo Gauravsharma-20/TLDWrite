@@ -1,28 +1,14 @@
-from pymongo import MongoClient
-import gridfs
-from io import BytesIO
 from bson import ObjectId
-
 # Bart-Large-CNN
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-def read_data(fileId):
-    # Estabhlish mongoDB connection
-    mongoURI = f"mongodb+srv://shivam:Avengers123@mycluster.eafse.mongodb.net/TLDWrite?retryWrites=true&w=majority"
-
-    client = MongoClient(mongoURI)
-    fs = gridfs.GridFS(client['TLDWrite'], "uploads")
-
-    oid = ObjectId(fileId)
-    data = fs.get(oid)
-    return data
-
-def text_summary(fileId, transcript=""):
+def text_summary(fileId, fs, transcript=""):
     try:
         sentences = transcript
         
         if len(sentences) == 0:
-            data = read_data(fileId)
+            oid = ObjectId(fileId)
+            data = fs.get(oid)
             sentences = data.read()
 
         # Load tokenizer 

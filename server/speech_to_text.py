@@ -6,24 +6,11 @@ import sys
 from bson import ObjectId
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
-from pymongo import MongoClient
-import gridfs
-
-def read_data(fileId):
-    # Estabhlish mongoDB connection
-    mongoURI = f"mongodb+srv://shivam:Avengers123@mycluster.eafse.mongodb.net/TLDWrite?retryWrites=true&w=majority"
-
-    client = MongoClient(mongoURI)
-    fs = gridfs.GridFS(client['TLDWrite'], "uploads")
-
-    oid = ObjectId(fileId)
-    data = fs.get(oid)
-    return data
     
-def automatic_speech_recognition(fileId):
+def automatic_speech_recognition(fileId, fs):
     try:
-
-        data = read_data(fileId)
+        oid = ObjectId(fileId)
+        data = fs.get(oid)
         
         dir_path = os.path.dirname(os.path.realpath(__file__))
         r = sr.Recognizer()
