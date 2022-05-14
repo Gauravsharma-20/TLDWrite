@@ -29,6 +29,7 @@
 
 .ar91containerContent a {
   color: var(--colorWhite);
+  text-decoration: underline;
 }
 
 .ar91containerContent h3 {
@@ -37,8 +38,16 @@
   line-height: 30.3px;
 
   color: var(--colorWhite);
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
   cursor: pointer;
+}
+
+.ar91containerContent p {
+  color: var(--colorText);
+  text-overflow: ellipsis;
+  white-space: wrap;
+  overflow: hidden; 
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 550px) {
