@@ -1,12 +1,88 @@
-.container {
-    width: 80px;
+body {
+    width: 170px;
+    height: 220px;
+}
+
+.titleText {
+    font-size: 19px;
 }
 
 button {
-    width: 50px;
-    height: 30px;
+    width: 150px;
+    height: 40px;
     outline: none;
     border: none;
-    border-radius: 30px;
+    border-radius: 10px;
     margin: 10px;
+    background-color: #ff4820;
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
+
+.containers {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.gradientBackground {
+    /* ff 3.6+ */
+    background: -moz-radial-gradient(
+      circle at 30% -100%,
+      #042c54 25%,
+      rgba(4, 44, 84, 1) 85%,
+      rgba(27, 120, 222, 1) 100%
+    );
+  
+    /* safari 5.1+,chrome 10+ */
+    background: radial-gradient(
+      circle at 30% -100%,
+      #042c54 25%,
+      rgb(12 22 32) 85%,
+      rgb(0 0 0) 100%
+    );
+  
+    /* opera 11.10+ */
+    background: -o-radial-gradient(
+      circle at 30% -100%,
+      #042c54 25%,
+      rgba(4, 44, 84, 1) 85%,
+      rgba(27, 120, 222, 1) 100%
+    );
+  
+    /* ie 10+ */
+    background: -ms-radial-gradient(
+      circle at 30% -100%,
+      #042c54 25%,
+      rgba(4, 44, 84, 1) 85%,
+      rgba(27, 120, 222, 1) 100%
+    );
+  
+    /* global 92%+ browsers support */
+    background: radial-gradient(
+      circle at 30% -100%,
+      #042c54 25%,
+      rgba(4, 44, 84, 1) 85%,
+      rgba(27, 120, 222, 1) 100%
+    );
+  }
+
+.gradientText {
+    background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
