@@ -53,7 +53,7 @@ const FileUploader = (props) => {
         let downloadName = endpoint === "speechtotext" ? "transcript" : "summary";
         
         try {
-            const response = await axios.post(`http://localhost:8080/${endpoint}`, data, config);
+            const response = await axios.post(`http://192.168.100.13:8080/${endpoint}`, data, config);
 
             if(response?.data) {               
                 const content = response.data;
